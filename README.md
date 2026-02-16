@@ -1,6 +1,6 @@
 # Juan Guillermo Piñerez Marín
 
-![Foto personal](Juan-Guillermo-Piñerez/fotopersonal.jpg)
+![Foto personal](Juan-Guillermo-Piñerez/fotopersonal.png)
 
 *Rol en la industria:* Desarrollo de Videojuegos  
 *Ubicación:* Colombia  
