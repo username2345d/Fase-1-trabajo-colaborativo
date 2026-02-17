@@ -22,3 +22,15 @@ Me considero una persona responsable, comprometido y con buena disposición para
 
 Soy una estudiante de Ingeniería Multimedia, me encanta todo lo que tenga que ver con multimedia, desde videos juegos, hasta recursos audio visuales, entre otros. Soy una persona divertida y se trabajar sola y en equipo.
 
+
+# Daniel Ricardo Guerrero Zuluaga
+
+![daniel](Daniel_Guerrero/daniel.jpg)
+
+*Rol en la industria:* Artista Gráfico
+*Ubicación:* Colombia
+
+## Perfil
+
+Soy Daniel Guerrero, tengo 25 años, soy estudiante en Ingeniería Multimedia, actualmente laboro como Diseñador Gráfico y fotógrafo.
+Soy amante a la música, a la pintura y las expresiones artísticas].
