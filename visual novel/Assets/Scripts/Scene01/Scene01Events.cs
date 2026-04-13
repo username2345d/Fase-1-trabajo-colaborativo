@@ -10,6 +10,7 @@ public class Scene01Events : MonoBehaviour
     public GameObject charFhósSpeak1;
     public GameObject charFhósSpeak2;
     public GameObject charNpc;
+    public GameObject TextBox;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class Scene01Events : MonoBehaviour
         charFhós.SetActive(true);
 
         yield return new WaitForSeconds(2);
-        //this is where our text function go will go in future
+        TextBox.SetActive(true);
 
         yield return new WaitForSeconds(6);
         charFhós.SetActive(false);
