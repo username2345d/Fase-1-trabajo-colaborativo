@@ -15,6 +15,7 @@ public class Scene01Events : MonoBehaviour
     public GameObject charFhósSpeak1;
     public GameObject charFhósSpeak2;
     public GameObject charFhósSpeak3;
+    public GameObject charSpeakAngry;
     public GameObject charNpc;
     public GameObject textBox;
     //AudioSource Pending
@@ -164,19 +165,19 @@ public class Scene01Events : MonoBehaviour
         yield return new WaitUntil(() => textLenght == currentTextLenght);
         yield return new WaitForSeconds(0.05f);
         nextButton.SetActive(true);
-        eventPos = 5;
+        eventPos = 6;
     }
 
     IEnumerator EventSix()
     {
         //event 6
-        nextButton.SetActive(false);
-        charFhósSpeak3.SetActive(false);
-        charFhósSpeak2.SetActive(true);
+        nextButton.SetActive(false);        
+        charFhósSpeak2.SetActive(false);
+        charSpeakAngry.SetActive(true);
         charNpc.SetActive(true);
         textBox.SetActive(true);
         charName.GetComponent<TMPro.TMP_Text>().text = "King Fhós";
-        textToSpeak = "The heart of the sun…";
+        textToSpeak = "It is not just power… it is control.\r\nIt is… a solution.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
