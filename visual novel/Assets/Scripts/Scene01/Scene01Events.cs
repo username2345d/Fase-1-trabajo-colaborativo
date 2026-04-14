@@ -13,6 +13,8 @@ public class Scene01Events : MonoBehaviour
     public GameObject charFhós;
     public GameObject charFhósStopSpeak;
     public GameObject charFhósSpeak1;
+    public GameObject charFhósSpeak2;
+    public GameObject charFhósSpeak3;
     public GameObject charNpc;
     public GameObject textBox;
     //AudioSource Pending
@@ -81,12 +83,139 @@ public class Scene01Events : MonoBehaviour
         eventPos = 2;
     }
 
+    IEnumerator EventTwo()
+    {
+        //event 2
+        nextButton.SetActive(false);
+        charFhósStopSpeak.SetActive(false);
+        charFhósSpeak1.SetActive(true);
+        charNpc.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "King Fhós";
+        textToSpeak = "The cost of doing nothing… we are already paying it.\r\nThe only difference… is whether we are willing to accept it.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(0.05f);               
+        nextButton.SetActive(true);
+        eventPos = 3;
+    }
+
+    IEnumerator EventThree()
+    {
+        //event 3
+        nextButton.SetActive(false);        
+        charFhósSpeak1.SetActive(false);
+        charFhósStopSpeak.SetActive(true);
+        charNpc.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Advisor";
+        textToSpeak = "That is madness, Your Majesty!\r\nYou cannot control something like that!\r\nThe cost would be incalculable!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(0.05f);
+        nextButton.SetActive(true);
+        eventPos = 4;
+    }
+
+    IEnumerator EventFour()
+    {
+        //event 4
+        nextButton.SetActive(false);
+        charFhósStopSpeak.SetActive(false);
+        charFhósSpeak3.SetActive(true);
+        charNpc.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "King Fhós";
+        textToSpeak = "Then let the world judge me…\r\nbut let it survive.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(0.05f);
+        nextButton.SetActive(true);
+        eventPos = 5;
+    }
+
+    IEnumerator EventFive()
+    {
+        //event 5
+        nextButton.SetActive(false);
+        charFhósSpeak3.SetActive(false);
+        charFhósSpeak2.SetActive(true);
+        charNpc.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "King Fhós";
+        textToSpeak = "The heart of the sun…";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(0.05f);
+        nextButton.SetActive(true);
+        eventPos = 5;
+    }
+
+    IEnumerator EventSix()
+    {
+        //event 6
+        nextButton.SetActive(false);
+        charFhósSpeak3.SetActive(false);
+        charFhósSpeak2.SetActive(true);
+        charNpc.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "King Fhós";
+        textToSpeak = "The heart of the sun…";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(0.05f);
+        nextButton.SetActive(true);
+        eventPos = 7;
+    }
+
     public void NextButton()
     {
         if (eventPos == 1)
         {
             StartCoroutine(EventOne());
         }
+        if (eventPos == 2)
+        {
+            StartCoroutine(EventTwo());
+        }
+        if (eventPos == 3)
+        {
+            StartCoroutine(EventThree());
+        }
+        if (eventPos == 4)
+        {
+            StartCoroutine(EventFour());
+        }
+        if (eventPos == 5)
+        {
+            StartCoroutine(EventFive());
+        }
+        if (eventPos == 6)
+        {
+            StartCoroutine(EventSix());
+        }
+
+
     }
 
 
