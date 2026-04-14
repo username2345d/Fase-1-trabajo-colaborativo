@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// References and variables used to control the scene.
+// Includes character GameObjects, UI elements (text box, buttons, name display),
+// and variables for handling dialogue (text content and length).
+// Also manages event progression within the scene through eventPos.
 public class Scene01Events : MonoBehaviour
 {
 
@@ -11,14 +15,15 @@ public class Scene01Events : MonoBehaviour
     public GameObject charFhósSpeak1;
     public GameObject charNpc;
     public GameObject textBox;
-
     //AudioSource Pending
     //AudioSource Pending
-
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLenght;
     [SerializeField] int textLenght;
     [SerializeField] GameObject mainTextObject;
+    [SerializeField] GameObject nextButton;
+    [SerializeField] int eventPos = 0;
+    [SerializeField] GameObject charName;
 
     void Update()
     {
@@ -30,10 +35,11 @@ public class Scene01Events : MonoBehaviour
         StartCoroutine(EventStarter());
     }
 
-    // This coroutine controls the entire initial sequence of Scene 01.
-    // It is the main part of the events in this scene (intro cinematic) and character timings.
+    // This section controls each sequence.
+    // It contains controllers for text, character appearance timing,and the buttons for each event.
     IEnumerator EventStarter() 
     {
+        //event 0
         yield return new WaitForSeconds(2);
         FadeScreenIn.SetActive(false);        
 
@@ -49,16 +55,38 @@ public class Scene01Events : MonoBehaviour
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLenght == currentTextLenght);
         yield return new WaitForSeconds(0.05f);
-        textBox.SetActive(true);
-       
+        nextButton.SetActive(true);
+        eventPos = 1;
 
-        yield return new WaitForSeconds(2);
+    }
+
+    IEnumerator EventOne()
+    {
+        //event 1
+        nextButton.SetActive(false);
         charFhósSpeak1.SetActive(false);
         charFhósStopSpeak.SetActive(true);
-
-        yield return new WaitForSeconds(1);
         charNpc.SetActive(true);
+        textBox.SetActive(true);
+        charName.GetComponent<TMPro.TMP_Text>().text = "Advisor";      
+        textToSpeak = "Your Majesty… the reports from the front are growing worse by the day.\r\nWe have completely lost control of the North.\r\nOur defenses will not withstand another attack, and the population is already falling into panic.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(0.05f);       
+        nextButton.SetActive(true);
+        eventPos = 2;
+    }
 
+    public void NextButton()
+    {
+        if (eventPos == 1)
+        {
+            StartCoroutine(EventOne());
+        }
     }
 
 
