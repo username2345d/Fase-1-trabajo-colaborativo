@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // References and variables used to control the scene.
 // Includes character GameObjects, UI elements (text box, buttons, name display),
@@ -201,6 +202,7 @@ public class Scene01Events : MonoBehaviour
         FadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
         eventPos = 7;
+        SceneManager.LoadScene(1);
     }
 
     public void NextButton()
