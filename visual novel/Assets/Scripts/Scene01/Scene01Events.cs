@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // References and variables used to control the scene.
 // Includes character GameObjects, UI elements (text box, buttons, name display),
@@ -27,6 +28,7 @@ public class Scene01Events : MonoBehaviour
     [SerializeField] GameObject nextButton;
     [SerializeField] int eventPos = 0;
     [SerializeField] GameObject charName;
+    [SerializeField] GameObject FadeOut;
 
     void Update()
     {
@@ -189,6 +191,20 @@ public class Scene01Events : MonoBehaviour
         eventPos = 7;
     }
 
+    IEnumerator EventSeven()
+    {
+        //event 7
+        nextButton.SetActive(false);
+        charFhósSpeak2.SetActive(false);
+        charSpeakAngry.SetActive(true);
+        charNpc.SetActive(true);
+        textBox.SetActive(true);
+        FadeOut.SetActive(true);
+        yield return new WaitForSeconds(2);
+        eventPos = 7;
+        SceneManager.LoadScene(3);
+    }
+
     public void NextButton()
     {
         if (eventPos == 1)
@@ -214,6 +230,10 @@ public class Scene01Events : MonoBehaviour
         if (eventPos == 6)
         {
             StartCoroutine(EventSix());
+        }
+        if (eventPos == 7)
+        {
+            StartCoroutine(EventSeven());
         }
 
 
