@@ -28,7 +28,7 @@ public class Scene03Events : MonoBehaviour
     [SerializeField] GameObject mainTextObject;
     [SerializeField] GameObject nextButton;
     [SerializeField] GameObject charName;
-    [SerializeField] GameObject choicePanel;  
+    [SerializeField] GameObject choicePanel;
 
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLenght;
@@ -101,7 +101,7 @@ public class Scene03Events : MonoBehaviour
         charFhósSpeak1.SetActive(false);
         charFhósIdle.SetActive(true);
         charThalassaIdle.SetActive(false);
-        charThalassaSpeakAnim.SetActive(true);
+        charThalassaSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
         textToSpeak = "Then flee with us! There is still time.";
@@ -121,7 +121,7 @@ public class Scene03Events : MonoBehaviour
     IEnumerator EventThree()
     {
         nextButton.SetActive(false);
-        charThalassaSpeakAnim.SetActive(false);
+        charThalassaSpeak1.SetActive(false);
         charThalassaIdle.SetActive(true);
         charFhósIdle.SetActive(false);
         charFhósSpeak2.SetActive(true);
@@ -192,7 +192,7 @@ public class Scene03Events : MonoBehaviour
         charFhósSpeak1.SetActive(false);
         charFhósIdle.SetActive(true);
         charThalassaIdle.SetActive(false);
-        charThalassaSpeakAnim.SetActive(true);
+        charThalassaSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
         textToSpeak = "Fhós… What are you going to do?";
@@ -212,7 +212,7 @@ public class Scene03Events : MonoBehaviour
     IEnumerator EventSeven()
     {
         nextButton.SetActive(false);
-        charThalassaSpeakAnim.SetActive(false);
+        charThalassaSpeak1.SetActive(false);
         charThalassaIdle.SetActive(true);
         charFhósIdle.SetActive(false);
         charFhósSpeak2.SetActive(true);
@@ -238,7 +238,7 @@ public class Scene03Events : MonoBehaviour
         charFhósSpeak2.SetActive(false);
         charFhósIdle.SetActive(true);
         charThalassaIdle.SetActive(false);
-        charThalassaSpeakAnim.SetActive(true);
+        charThalassaSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
         textToSpeak = "This is your last chance! Choose!";
@@ -251,9 +251,22 @@ public class Scene03Events : MonoBehaviour
         yield return new WaitUntil(() => textLenght == currentTextLenght);
         yield return new WaitForSeconds(0.5f);
 
+        // === Ocultar todo antes del panel de eleccion ===
         nextButton.SetActive(false);
+        mainTextObject.SetActive(false);
+        textBox.SetActive(false);
+
+        charFhósIdle.SetActive(false);
+        charFhósSpeak1.SetActive(false);
+        charFhósSpeak2.SetActive(false);
+        charFhósAnim.SetActive(false);
+        charThalassaIdle.SetActive(false);
+        charThalassaSpeak1.SetActive(false);
         charThalassaSpeakAnim.SetActive(false);
-        charThalassaIdle.SetActive(true);
+        charVarkasIdle.SetActive(false);
+        charVarkasSpeak.SetActive(false);
+        charVarkasAnim.SetActive(false);
+
         choicePanel.SetActive(true);
     }
 
@@ -262,26 +275,30 @@ public class Scene03Events : MonoBehaviour
     public void ChoiceLiberation()
     {
         choicePanel.SetActive(false);
+        mainTextObject.SetActive(true);
+        textBox.SetActive(true);
         StartCoroutine(EndingLiberation());
     }
 
     public void ChoiceSacrifice()
     {
         choicePanel.SetActive(false);
+        mainTextObject.SetActive(true);
+        textBox.SetActive(true);
         StartCoroutine(EndingSacrifice());
     }
 
     public void ChoiceVanishing()
     {
         choicePanel.SetActive(false);
+        mainTextObject.SetActive(true);
+        textBox.SetActive(true);
         StartCoroutine(EndingVanishing());
     }
 
     IEnumerator EndingLiberation()
     {
-        charFhósIdle.SetActive(false);
         charFhósAnim.SetActive(true);
-        charThalassaIdle.SetActive(false);
         charThalassaSpeakAnim.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
@@ -293,16 +310,14 @@ public class Scene03Events : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLenght == currentTextLenght);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
 
         StartCoroutine(EndingSequence());
     }
 
     IEnumerator EndingSacrifice()
     {
-        charFhósIdle.SetActive(false);
         charFhósAnim.SetActive(true);
-        charVarkasIdle.SetActive(false);
         charVarkasSpeak.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Varkas";
@@ -318,7 +333,6 @@ public class Scene03Events : MonoBehaviour
 
         charVarkasSpeak.SetActive(false);
         charVarkasIdle.SetActive(true);
-        charThalassaIdle.SetActive(false);
         charThalassaSpeakAnim.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
@@ -330,16 +344,14 @@ public class Scene03Events : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLenght == currentTextLenght);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
 
         StartCoroutine(EndingSequence());
     }
 
     IEnumerator EndingVanishing()
     {
-        charFhósIdle.SetActive(false);
         charFhósAnim.SetActive(true);
-        charThalassaIdle.SetActive(false);
         charThalassaSpeakAnim.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
@@ -351,7 +363,7 @@ public class Scene03Events : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLenght == currentTextLenght);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
 
         StartCoroutine(EndingSequence());
     }
