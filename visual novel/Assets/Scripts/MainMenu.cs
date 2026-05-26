@@ -20,7 +20,12 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(TransferToClassScene());
     }
 
-    
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
     void Update()
     {
         
@@ -29,6 +34,6 @@ public class MainMenu : MonoBehaviour
     IEnumerator TransferToClassScene()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }
