@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scene02Events : MonoBehaviour
+public class Scene03Events : MonoBehaviour
 {
     // === Fades ===
     public GameObject FadeScreenIn;
@@ -28,11 +28,11 @@ public class Scene02Events : MonoBehaviour
     [SerializeField] GameObject mainTextObject;
     [SerializeField] GameObject nextButton;
     [SerializeField] GameObject charName;
+    [SerializeField] GameObject choicePanel;
 
     [SerializeField] string textToSpeak;
     [SerializeField] int currentTextLenght;
     [SerializeField] int textLenght;
-
     [SerializeField] int eventPos = 0;
 
     void Update()
@@ -47,20 +47,18 @@ public class Scene02Events : MonoBehaviour
 
     IEnumerator EventStarter()
     {
-        //event 0 - Inicio de escena
         yield return new WaitForSeconds(1.5f);
         FadeScreenIn.SetActive(false);
 
         yield return new WaitForSeconds(1f);
 
-        charThalassaSpeakAnim.SetActive(true);
         charFhósAnim.SetActive(true);
-
+        charThalassaSpeakAnim.SetActive(true);
         mainTextObject.SetActive(true);
         textBox.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
-        textToSpeak = "Fhós… You can still stop this.\r\nYou don't have to keep carrying everything alone.";
+        textToSpeak = "Fhós, stop! Please!";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -79,12 +77,11 @@ public class Scene02Events : MonoBehaviour
         nextButton.SetActive(false);
         charThalassaSpeakAnim.SetActive(false);
         charThalassaIdle.SetActive(true);
-
         charFhósAnim.SetActive(false);
         charFhósSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Fhós";
-        textToSpeak = "It's not that simple.\r\nIf I let go now, everything falls apart.";
+        textToSpeak = "I can't stop anymore.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -107,7 +104,7 @@ public class Scene02Events : MonoBehaviour
         charThalassaSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
-        textToSpeak = "Look at yourself. That light is consuming you alive.\r\nHow much longer do you think you can endure this?";
+        textToSpeak = "Then flee with us! There is still time.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -124,13 +121,13 @@ public class Scene02Events : MonoBehaviour
     IEnumerator EventThree()
     {
         nextButton.SetActive(false);
-        charFhósIdle.SetActive(false);
-        charFhósSpeak1.SetActive(true);
         charThalassaSpeak1.SetActive(false);
         charThalassaIdle.SetActive(true);
+        charFhósIdle.SetActive(false);
+        charFhósSpeak2.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Fhós";
-        textToSpeak = "As long as necessary.\r\nSomeone has to hold it together.";
+        textToSpeak = "A king may abandon his crown… but not the consequences of his decisions.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -138,7 +135,7 @@ public class Scene02Events : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => textLenght == currentTextLenght);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         nextButton.SetActive(true);
         eventPos = 4;
@@ -147,13 +144,12 @@ public class Scene02Events : MonoBehaviour
     IEnumerator EventFour()
     {
         nextButton.SetActive(false);
-        charFhósSpeak1.SetActive(false);
+        charFhósSpeak2.SetActive(false);
         charFhósIdle.SetActive(true);
-        charThalassaIdle.SetActive(true);
         charVarkasAnim.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Varkas";
-        textToSpeak = "Your Majesty.";
+        textToSpeak = "Your Majesty… If the core falls, everything will disappear.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -176,7 +172,7 @@ public class Scene02Events : MonoBehaviour
         charFhósSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Fhós";
-        textToSpeak = "Speak, Varkas.";
+        textToSpeak = "Only what should never have existed will disappear.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -195,11 +191,11 @@ public class Scene02Events : MonoBehaviour
         nextButton.SetActive(false);
         charFhósSpeak1.SetActive(false);
         charFhósIdle.SetActive(true);
-        charVarkasIdle.SetActive(false);
-        charVarkasSpeak.SetActive(true);
+        charThalassaIdle.SetActive(false);
+        charThalassaSpeak1.SetActive(true);
 
-        charName.GetComponent<TMPro.TMP_Text>().text = "Varkas";
-        textToSpeak = "The eastern sectors have completely collapsed.\r\nThe barriers fell minutes ago.\r\nThere are thousands crystallized… and those still breathing won't last much longer.";
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
+        textToSpeak = "Fhós… What are you going to do?";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -216,13 +212,13 @@ public class Scene02Events : MonoBehaviour
     IEnumerator EventSeven()
     {
         nextButton.SetActive(false);
-        charVarkasSpeak.SetActive(false);
-        charVarkasIdle.SetActive(true);
+        charThalassaSpeak1.SetActive(false);
+        charThalassaIdle.SetActive(true);
         charFhósIdle.SetActive(false);
-        charFhósSpeak1.SetActive(true);
+        charFhósSpeak2.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Fhós";
-        textToSpeak = "How many survivors?";
+        textToSpeak = "All this time I tried to control the light… when I only had to let it go.";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -239,37 +235,13 @@ public class Scene02Events : MonoBehaviour
     IEnumerator EventEight()
     {
         nextButton.SetActive(false);
-        charFhósSpeak1.SetActive(false);
-        charFhósIdle.SetActive(true);
-        charVarkasIdle.SetActive(false);
-        charVarkasSpeak.SetActive(true);
-
-        charName.GetComponent<TMPro.TMP_Text>().text = "Varkas";
-        textToSpeak = "Enough for the number to no longer matter.";
-        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
-        currentTextLenght = textToSpeak.Length;
-        TextCreator.runTextPrint = true;
-
-        yield return new WaitForSeconds(0.05f);
-        yield return new WaitForSeconds(1);
-        yield return new WaitUntil(() => textLenght == currentTextLenght);
-        yield return new WaitForSeconds(0.5f);
-
-        nextButton.SetActive(true);
-        eventPos = 9;
-    }
-
-    IEnumerator EventNine()
-    {
-        nextButton.SetActive(false);
-        charVarkasSpeak.SetActive(false);
-        charVarkasIdle.SetActive(true);
+        charFhósSpeak2.SetActive(false);
         charFhósIdle.SetActive(true);
         charThalassaIdle.SetActive(false);
         charThalassaSpeak1.SetActive(true);
 
         charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
-        textToSpeak = "Fhós… you're at your limit.\r\nYou have to choose what matters most now.";
+        textToSpeak = "This is your last chance! Choose!";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -279,20 +251,77 @@ public class Scene02Events : MonoBehaviour
         yield return new WaitUntil(() => textLenght == currentTextLenght);
         yield return new WaitForSeconds(0.5f);
 
-        nextButton.SetActive(true);
-        eventPos = 10;
+        // === Ocultar todo antes del panel de eleccion ===
+        nextButton.SetActive(false);
+        mainTextObject.SetActive(false);
+        textBox.SetActive(false);
+
+        charFhósIdle.SetActive(false);
+        charFhósSpeak1.SetActive(false);
+        charFhósSpeak2.SetActive(false);
+        charFhósAnim.SetActive(false);
+        charThalassaIdle.SetActive(false);
+        charThalassaSpeak1.SetActive(false);
+        charThalassaSpeakAnim.SetActive(false);
+        charVarkasIdle.SetActive(false);
+        charVarkasSpeak.SetActive(false);
+        charVarkasAnim.SetActive(false);
+
+        choicePanel.SetActive(true);
     }
 
-    IEnumerator EventTen()
-    {
-        nextButton.SetActive(false);
-        charThalassaSpeak1.SetActive(false);
-        charThalassaIdle.SetActive(true);
-        charFhósIdle.SetActive(false);
-        charFhósSpeak2.SetActive(true);
+    // === RUTAS DE DECISION ===
 
-        charName.GetComponent<TMPro.TMP_Text>().text = "Fhós";
-        textToSpeak = "I can't save them all… but I can't abandon them either.";
+    public void ChoiceLiberation()
+    {
+        choicePanel.SetActive(false);
+        mainTextObject.SetActive(true);
+        textBox.SetActive(true);
+        StartCoroutine(EndingLiberation());
+    }
+
+    public void ChoiceSacrifice()
+    {
+        choicePanel.SetActive(false);
+        mainTextObject.SetActive(true);
+        textBox.SetActive(true);
+        StartCoroutine(EndingSacrifice());
+    }
+
+    public void ChoiceVanishing()
+    {
+        choicePanel.SetActive(false);
+        mainTextObject.SetActive(true);
+        textBox.SetActive(true);
+        StartCoroutine(EndingVanishing());
+    }
+
+    IEnumerator EndingLiberation()
+    {
+        charFhósAnim.SetActive(true);
+        charThalassaSpeakAnim.SetActive(true);
+
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
+        textToSpeak = "You did it… The true sun rises.";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(4f);
+
+        StartCoroutine(EndingSequence());
+    }
+
+    IEnumerator EndingSacrifice()
+    {
+        charFhósAnim.SetActive(true);
+        charVarkasSpeak.SetActive(true);
+
+        charName.GetComponent<TMPro.TMP_Text>().text = "Varkas";
+        textToSpeak = "Your Majesty…";
         textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
         currentTextLenght = textToSpeak.Length;
         TextCreator.runTextPrint = true;
@@ -302,9 +331,60 @@ public class Scene02Events : MonoBehaviour
         yield return new WaitUntil(() => textLenght == currentTextLenght);
         yield return new WaitForSeconds(0.5f);
 
+        charVarkasSpeak.SetActive(false);
+        charVarkasIdle.SetActive(true);
+        charThalassaSpeakAnim.SetActive(true);
+
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
+        textToSpeak = "No!";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(4f);
+
+        StartCoroutine(EndingSequence());
+    }
+
+    IEnumerator EndingVanishing()
+    {
+        charFhósAnim.SetActive(true);
+        charThalassaSpeakAnim.SetActive(true);
+
+        charName.GetComponent<TMPro.TMP_Text>().text = "Thalassa";
+        textToSpeak = "Fhós…";
+        textBox.GetComponent<TMPro.TMP_Text>().text = textToSpeak;
+        currentTextLenght = textToSpeak.Length;
+        TextCreator.runTextPrint = true;
+
+        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => textLenght == currentTextLenght);
+        yield return new WaitForSeconds(4f);
+
+        StartCoroutine(EndingSequence());
+    }
+
+    IEnumerator EndingSequence()
+    {
         FadeOut.SetActive(true);
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(3);
+        yield return new WaitForSeconds(2f);
+
+        charFhósAnim.SetActive(false);
+        charFhósIdle.SetActive(false);
+        charFhósSpeak1.SetActive(false);
+        charFhósSpeak2.SetActive(false);
+        charThalassaSpeakAnim.SetActive(false);
+        charThalassaIdle.SetActive(false);
+        charThalassaSpeak1.SetActive(false);
+        charVarkasAnim.SetActive(false);
+        charVarkasIdle.SetActive(false);
+        charVarkasSpeak.SetActive(false);
+
+        SceneManager.LoadScene(4);
     }
 
     public void NextButton()
@@ -317,7 +397,5 @@ public class Scene02Events : MonoBehaviour
         else if (eventPos == 6) StartCoroutine(EventSix());
         else if (eventPos == 7) StartCoroutine(EventSeven());
         else if (eventPos == 8) StartCoroutine(EventEight());
-        else if (eventPos == 9) StartCoroutine(EventNine());
-        else if (eventPos == 10) StartCoroutine(EventTen());
     }
 }
