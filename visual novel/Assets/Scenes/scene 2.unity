@@ -2031,7 +2031,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582569835}
   m_CullTransparentMesh: 1
---- !u!1 &1819176789
+--- !u!1 &1641770761
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2039,24 +2039,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1819176790}
-  - component: {fileID: 1819176792}
-  - component: {fileID: 1819176791}
+  - component: {fileID: 1641770762}
+  - component: {fileID: 1641770765}
+  - component: {fileID: 1641770764}
+  - component: {fileID: 1641770763}
   m_Layer: 5
-  m_Name: varkas Anim
+  m_Name: varkas anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!224 &1819176790
+--- !u!224 &1641770762
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819176789}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1641770761}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2065,16 +2066,37 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -290.90002, y: 453.86}
-  m_SizeDelta: {x: 575.3682, y: 907.7165}
+  m_AnchoredPosition: {x: -290.9101, y: 453.86}
+  m_SizeDelta: {x: 575.35, y: 907.72}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1819176791
+--- !u!95 &1641770763
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641770761}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d08ac1faf037dc4cbe9eb6a2ffd4edf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1641770764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819176789}
+  m_GameObject: {fileID: 1641770761}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
@@ -2095,13 +2117,13 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!222 &1819176792
+--- !u!222 &1641770765
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819176789}
+  m_GameObject: {fileID: 1641770761}
   m_CullTransparentMesh: 1
 --- !u!1 &1860911193
 GameObject:
@@ -2413,7 +2435,7 @@ RectTransform:
   - {fileID: 1145215055}
   - {fileID: 1447381352}
   - {fileID: 1860911196}
-  - {fileID: 1819176790}
+  - {fileID: 1641770762}
   - {fileID: 701978960}
   - {fileID: 232047665}
   - {fileID: 851924641}
@@ -2482,7 +2504,7 @@ MonoBehaviour:
   charThalassaSpeakAnim: {fileID: 858698930}
   charVarkasIdle: {fileID: 701978959}
   charVarkasSpeak: {fileID: 232047664}
-  charVarkasAnim: {fileID: 1819176789}
+  charVarkasAnim: {fileID: 1641770761}
   textBox: {fileID: 784312496}
   mainTextObject: {fileID: 851924640}
   nextButton: {fileID: 1582569835}
